@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhantomTV</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Share Tech Mono', monospace;
+      background: linear-gradient(to right, #111, #222);
+      color: white;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid red;
+      animation: flicker 1.5s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      100% { opacity: 0.8; }
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: rgba(0,0,0,0.8);
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: red;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: orange;
+    }
+
+    .section {
+      padding: 50px 20px;
+      text-align: center;
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      margin: 20px auto;
+      border: 1px solid red;
+      border-radius: 10px;
+      max-width: 600px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .binary-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .binary {
+      color: rgba(255, 255, 255, 0.05);
+      font-size: 18px;
+      white-space: nowrap;
+      animation: moveBinary 20s linear infinite;
+    }
+
+    @keyframes moveBinary {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    .rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    .drop {
+      position: absolute;
+      width: 2px;
+      height: 20px;
+      background: rgba(255,255,255,0.1);
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px;
+      font-size: 14px;
+      color: gray;
+    }
+
+    button {
+      background: red;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: orange;
+    }
+
+    #thankYouMsg {
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 18px;
+      color: limegreen;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .donor-list {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .donor-list ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .donor-list li {
+      padding: 5px 0;
+      color: #aaa;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body onload="checkThankYou()">
+  <div class="binary-background">
+    <pre class="binary">0101101010011010101100101010101010101010101010101010100101010101010101010101010101010</pre>
+  </div>
+  <div class="rain" id="rain"></div>
+
+  <header>
+    <h1>👾 PhantomTV 👾</h1>
+  </header>
+
+  <nav>
+    <a href="#about">Über Uns</a>
+    <a href="#socials">Socials</a>
+    <a href="#support">Support</a>
+    <a href="#donate">Spenden</a>
+    <a href="#thanks">Danke-Seite</a>
+  </nav>
+
+  <section id="about" class="section">
+    <div class="card">
+      <h2>Willkommen bei PhantomTV</h2>
+      <p>Deine digitale Hacker-Style Plattform. Folge uns und bleib dabei!</p>
+    </div>
+  </section>
+
+  <section id="socials" class="section">
+    <div class="card">
+  <h2>📷 Instagram</h2>
+  <a href="https://www.instagram.com/qjww" target="_blank" style="color: red;">@qjww</a>
+</div>
+<div class="card">
+  <h2>🎵 TikTok</h2>
+  <a href="https://www.tiktok.com/@5.je" target="_blank" style="color: red;">@5.je</a>
+</div>
+    <div class="card">
+      <h2>🗨️ Discord</h2>
+      <a href="https://discord.gg/phantomtv" target="_blank">Discord beitreten</a>
+    </div>
+    <div class="card">
+      <h2>✈️ Telegram</h2>
+      <a href="https://t.me/phantom_tvvv" target="_blank">Telegram öffnen</a>
+    </div>
+  </section>
+
+  <section id="support" class="section">
+    <div class="card">
+      <h2>📧 Support & Kooperation</h2>
+      <p>Schreib uns: phantomtvvv@gmail.com</p>
+    </div>
+  </section>
+
+  <section id="donate" class="section">
+    <div class="card">
+      <h2>💸 Spenden via PayPal</h2>
+      <p>Unterstütze uns freiwillig mit einer Spende:</p>
+      <form action="https://www.paypal.com/donate" method="post" target="_blank">
+        <input type="hidden" name="business" value="phantomtvvv@gmail.com">
+        <input type="hidden" name="no_recurring" value="0">
+        <input type="hidden" name="currency_code" value="EUR">
+        <input type="hidden" name="return" value="https://phantomtv.de/index.html#thanks">
+        <button type="submit" onclick="localStorage.setItem('newDonor','Anonym')">Jetzt Spenden</button>
+      </form>
+      <div id="thankYouMsg">Danke für deine Unterstützung! 💚</div>
+    </div>
+  </section>
+
+  <section id="thanks" class="section">
+    <div class="card">
+      <h2>🎉 Spenderliste</h2>
+      <p>Ein riesiges Dankeschön an unsere Unterstützer:</p>
+      <div class="donor-list">
+        <ul id="donorList">
+          <li>Max Mustermann</li>
+          <li>Lisa Beispiel</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 PhantomTV – Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const options = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        } else {
+          entry.target.style.opacity = 0;
+          entry.target.style.transform = 'translateY(50px)';
+        }
+      });
+    }, options);
+    sections.forEach(section => {
+      section.style.opacity = 0;
+      section.style.transform = 'translateY(50px)';
+      observer.observe(section);
+    });
+
+    function checkThankYou() {
+      const donor = localStorage.getItem('newDonor');
+      if (donor) {
+        addDonor(donor);
+        document.getElementById('thankYouMsg').style.display = 'block';
+        localStorage.removeItem('newDonor');
+      }
+    }
+
+    function addDonor(name) {
+      const donorList = document.getElementById('donorList');
+      const li = document.createElement('li');
+      li.textContent = name + ' (neu)';
+      donorList.appendChild(li);
+    }
+
+    function createRain() {
+      const rain = document.getElementById('rain');
+      for (let i = 0; i < 150; i++) {
+        const drop = document.createElement('div');
+        drop.className = 'drop';
+        drop.style.left = Math.random() * 100 + 'vw';
+        drop.style.animationDuration = 0.5 + Math.random() * 1.5 + 's';
+        drop.style.animationDelay = Math.random() * 5 + 's';
+        rain.appendChild(drop);
+      }
+    }
+    createRain();
+  </script>
+</body>
+</html>
