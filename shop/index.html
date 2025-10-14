@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phantomtvvv – Shop</title>
+<link rel="stylesheet" href="shop.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">Phantomtvvv</div>
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="shop.html" class="active">Shop</a>
+    </nav>
+</header>
+
+<main class="shop-wrapper">
+    <h1 class="shop-title">Phantomtvvv Shop</h1>
+    <div class="products-grid">
+
+        <div class="product-card">
+            <h3 class="product-name">🔥 Hoodie</h3>
+            <p class="product-desc">Unser schwarzer Hoodie mit rotem Phantom-Logo.</p>
+            <div class="product-price">€39,99</div>
+            <label>Menge:
+                <input type="number" min="1" value="1">
+            </label>
+            <button class="buy-btn">Kaufen</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="product-name">👕 T-Shirt</h3>
+            <p class="product-desc">Leichtes weißes Shirt mit Phantom-Aufdruck.</p>
+            <div class="product-price">€24,99</div>
+            <label>Menge:
+                <input type="number" min="1" value="1">
+            </label>
+            <button class="buy-btn">Kaufen</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="product-name">🧢 Mütze</h3>
+            <p class="product-desc">Rote Cap mit gesticktem Phantom-TVVV Schriftzug.</p>
+            <div class="product-price">€19,99</div>
+            <label>Menge:
+                <input type="number" min="1" value="1">
+            </label>
+            <button class="buy-btn">Kaufen</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="product-name">🎒 Tasche</h3>
+            <p class="product-desc">Schwarze Phantom-Umhängetasche mit rotem Logo.</p>
+            <div class="product-price">€29,99</div>
+            <label>Menge:
+                <input type="number" min="1" value="1">
+            </label>
+            <button class="buy-btn">Kaufen</button>
+        </div>
+
+    </div>
+</main>
+
+<script>
+document.querySelectorAll('.buy-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const card = btn.closest('.product-card');
+    const qty = card.querySelector('input').value;
+    alert(`${qty}× ${card.querySelector('.product-name').innerText} wurde in den Warenkorb gelegt (Demo).`);
+  });
+});
+</script>
+
+</body>
+</html>
